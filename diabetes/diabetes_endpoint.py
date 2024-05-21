@@ -1,12 +1,17 @@
 
 """
-GOOD
+HTTPie CALLS
 http http://127.0.0.1:8000
 http http://127.0.0.1:8000/patients/TimmyOToole
+http http://127.0.0.1:8000/patients/TimmyOToole/donegal
 http http://127.0.0.1:8000/disease/diabetes
 http http://127.0.0.1:8000/disease/chf
+http http://127.0.0.1:8000/hospitals
+http --form POST http://localhost:8000/filesbytes  file@./data.csv
+http --form POST http://localhost:8000/fileslarge  file@./data.csv
 
-ERRORS
+
+ILLUSTRATIVE ERRORS
 http http://127.0.0.1:8000/patients
 http http://127.0.0.1:8000/disease/Diabetes
 
