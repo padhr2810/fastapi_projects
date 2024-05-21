@@ -9,6 +9,7 @@ http http://127.0.0.1:8000/disease/chf
 http http://127.0.0.1:8000/hospitals
 http --form POST http://localhost:8000/filesbytes  file@./data.csv
 http --form POST http://localhost:8000/fileslarge  file@./data.csv
+http http://127.0.0.1:8000/mri_brain
 
 
 ILLUSTRATIVE ERRORS
@@ -20,6 +21,8 @@ http http://127.0.0.1:8000/disease/Diabetes
 from fastapi import FastAPI
 from fastapi import File 
 from fastapi import UploadFile
+from fastapi import Path
+from fastapi.responses import FileResponse
 import io 
 from enum import Enum
 import pandas as pd 
@@ -59,6 +62,8 @@ async def get_patients(disease: DiseaseType):
     
     return {disease: px_sublist}
 
+
+# Upload a CSV file for analysis: Method 1
 @app.post("/filesbytes")
 async def upload_file(file: bytes = File(...)):
 
@@ -68,7 +73,7 @@ async def upload_file(file: bytes = File(...)):
 
     return {"columns": cols, "mean_hba1c": hba1c }
 
-
+# Upload a CSV file for analysis: Method 2
 # PANDAS INPUT DIFFERS DEPENDING ON WHETHER BYTES OR FILE UPLOAD.
 @app.post("/fileslarge")
 async def upload_file(file: UploadFile = File(...)):
@@ -79,4 +84,12 @@ async def upload_file(file: UploadFile = File(...)):
 
     return {"columns": cols, "mean_hba1c": hba1c }
 
-
+# Download an image.
+# Open endpoint in browser to view the MRI image (not in terminal)
+@app.get("/mri_brain")
+async def get_mri():
+    #root_dir = Path(__file__).parent.parent
+    #picture_path = root_dir / "assets" / "mri_brain.jpg"
+    picture_path = "assets/mri_brain.jpg"
+    return FileResponse(picture_path)
+    
