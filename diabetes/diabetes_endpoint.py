@@ -15,7 +15,7 @@ http http://127.0.0.1:8000/disease/Diabetes
 from fastapi import FastAPI
 from fastapi import File 
 from fastapi import UploadFile
-from io import BytesIO 
+import io 
 from enum import Enum
 import pandas as pd 
 
@@ -56,13 +56,13 @@ async def get_patients(disease: DiseaseType):
 
 @app.post("/filesbytes")
 async def upload_file(file: bytes = File(...)):
-    #contents = file.read()
-    #data = BytesIO(contents)
-    
-    df = pd.read_csv(file.file)
-    data.close()
-    file.file.close()
-    return {"file_size": len(file)}
+
+    df = pd.read_csv(io.BytesIO(file), encoding='utf8')
+    cols = list(df.columns)
+    hba1c = df["hba1c"].mean()
+
+    return {"columns": cols, "mean_hba1c": hba1c }
+
 
 # PANDAS INPUT DIFFERS DEPENDING ON WHETHER BYTES OR FILE UPLOAD.
 @app.post("/fileslarge")
