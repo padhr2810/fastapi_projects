@@ -1,1 +1,0 @@
-http localhost:8000/prediction text="Why_is_the_sky_blue?"
