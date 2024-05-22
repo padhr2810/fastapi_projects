@@ -22,12 +22,12 @@ engine = create_engine(url_object)
 Base = declarative_base()
 
 # Define a model for the "users" table
-class User(Base):
-    __tablename__ = 'users'
+class Patient(Base):
+    __tablename__ = 'patients'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    age = Column(Integer)
+    patient_id = Column(Integer, primary_key=True)
+    patient_name = Column(String)
+    patient_age = Column(Integer)
 
 # Create the database tables
 Base.metadata.create_all(engine)

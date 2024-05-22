@@ -15,16 +15,16 @@ engine = create_engine(url_object)
 # Create a base class for our models
 Base = declarative_base()
 
-# Define a model for the "users" table
-class User(Base):
-    __tablename__ = 'users'
+# Define a model for the "patients" table
+class Patient(Base):
+    __tablename__ = 'patients'
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    age = Column(Integer)
+    patient_id = Column(Integer, primary_key=True)
+    patient_name = Column(String)
+    patient_age = Column(Integer)
 
     def __repr__(self) -> str:
-        return f"<User id: {self.id:>3}: name: {self.name:<13}, age: {self.age:>3}>"
+        return f"<Patient id: {self.patient_id:>3}: name: {self.patient_name:<13}, age: {self.patient_age:>3}>"
 
 # create the database tables
 Base.metadata.create_all(engine)
