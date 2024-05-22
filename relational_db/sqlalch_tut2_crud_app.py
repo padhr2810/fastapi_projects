@@ -40,6 +40,7 @@ print(user.patient_id)
 print(user.patient_name)
 print(user.patient_age)
 
+# "one_or_none()" - return None if no matching item in db; or return instance of class Product if exactly one matching item; or raise exception if multiple matching items in db.
 user = session.query(Patient).filter_by(patient_id=1).one_or_none()
 print(user)
 
@@ -47,7 +48,7 @@ print(user)
 for user in users:
     print(f"Patient id: {user.patient_id}, name: {user.patient_name}, age: {user.patient_age}")
 
-# Get first user from the data
+# Get first user from the data (return None if no results)
 user_first = session.query(Patient).first()
 print('First Patient: ', user_first)
 

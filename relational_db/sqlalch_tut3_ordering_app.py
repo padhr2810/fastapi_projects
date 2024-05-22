@@ -21,24 +21,28 @@ if session.query(Patient).count() < 1:
     session.commit()
 
 
-# Query all users ordered by age (ascending)
+# Query 1: all users ordered by age (ASCENDING)
 users_1 = session.query(Patient).order_by(Patient.patient_age).all()
 # this is the same as:
 # users_1 = session.query(Patient).order_by(Patient.patient_age.asc()).all()
 
 print('\nAll Patients Ordered by age (ascending)')
 for user in users_1:
-    print(user)
+    print(user)		# print '__repr__' i.e. the string representation defined in the model / class
 
-# Query all users ordered by age (descending)
+
+
+# Query 2: all users ordered by age (DESCENDING)
 users_2 = session.query(Patient).order_by(Patient.patient_age.desc()).all()
 print('\nAll Patients Ordered by age (descending)')
 for user in users_2:
-    print(user)
+    print(user)		# print '__repr__' i.e. the string representation defined in the model / class
 
-# Order first by age and then name
+
+
+# Query 3: Order first by AGE AND THEN NAME
 users = session.query(Patient).order_by(Patient.patient_age, Patient.patient_name).all()
 print('\nAll Patients Ordered by age (ascending) and then name(ascending)')
 for user in users:
-    print(user)
+    print(user)		# print '__repr__' i.e. the string representation defined in the model / class
     
