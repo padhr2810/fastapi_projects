@@ -1,3 +1,7 @@
+"""
+arg name is 'image' i.e. in endpoint. Hence call 'image@' in HTTPie request. This is arbitrary. Change the HTTPie request according to the name of arg.
+"""
+
 import contextlib
 
 import torch
