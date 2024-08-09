@@ -110,3 +110,11 @@ sudo nano /etc/postgresql/16/main/pg_hba.conf
 # SELECT pg_reload_conf() ;
 
 # chapter 4:
+
+<<comment1
+ Line 1 of a Bash shell script comment
+ Line 2 of the comment 
+ The comment can be anything ... it is completed by restating the name (as below)
+comment1
+
+The word “comment” can be anything but it should be the same for ending the comment block.
