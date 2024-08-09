@@ -55,6 +55,7 @@ sudo ls main/base/1 | head
 history -w ~/history.txt
 nano ~/history.txt
 
+# chapter 3:
 
 sudo pg_ctlcluster 16 main start
 #  ...  (sql version) (cluster name) action
@@ -76,3 +77,36 @@ $EDITOR $PGDATA/pg_hba.conf
 locate pg_hba.conf
 sudo nano $PGDATA/pg_hba.conf 
 sudo nano /etc/postgresql/16/main/pg_hba.conf
+
+# CREATE ROLE pad WITH PASSWORD 'pw';
+# CREATE ROLE pad WITH LOGIN PASSWORD 'pw';
+# CREATE ROLE pad WITH PASSWORD 'pw' LOGIN;
+# CREATE ROLE pad WITH LOGIN PASSWORD 'pw' VALID UNTIL '2030-12-25 23:59:59';
+
+# CREATE ROLE book_authors WITH NOLOGIN;
+# CREATE ROLE pad WITH LOGIN PASSWORD 'pw' IN ROLE book_authors;
+# CREATE ROLE micko WITH LOGIN PASSWORD 'pw' IN ROLE book_authors;
+
+# GRANT book_authors TO pad;
+
+# CREATE ROLE book_reviewers WITH NOLOGIN ADMIN pad;
+
+# GRANT book_reviewers TO micko WITH ADMIN OPTION;
+
+# DROP ROLE IF EXIST i_dont_exist ;
+
+# SELECT current_role ;
+
+# PSQL COMMAND TO DESCRIBE ALL USERS:
+# \du 
+
+# PSQL COMMAND TO SHOW ALL GROUPS A ROLE IS A MEMBER OF:
+# \drg 
+
+# SELECT rolname, rolcanlogin, rolconnlimit, rolpassword FROM pg_roles WHERE rolname = 'pad' ;
+
+# SELECT rolname, rolcanlogin, rolconnlimit, rolpassword FROM pg_authid WHERE rolname = 'pad' ;
+
+# SELECT pg_reload_conf() ;
+
+# chapter 4:
