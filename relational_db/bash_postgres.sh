@@ -54,3 +54,25 @@ sudo ls main/base/1 | head
 #export history to a text file.
 history -w ~/history.txt
 nano ~/history.txt
+
+
+sudo pg_ctlcluster 16 main start
+#  ...  (sql version) (cluster name) action
+
+psql -U postgres
+psql -U luca
+
+echo $EDITOR
+nano $PGDATA/pg_hba.conf 
+locate bashrc
+nano ~/.bashrc
+echo $EDITOR
+echo $VISUAL
+# ADD THESE BOTH TO bashrc:
+# export VISUAL=vim
+# export EDITOR="$VISUAL"
+
+$EDITOR $PGDATA/pg_hba.conf
+
+locate pg_hba.conf
+sudo nano /etc/postgresql/16/main/pg_hba.conf
