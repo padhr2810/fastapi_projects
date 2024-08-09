@@ -60,19 +60,19 @@ sudo pg_ctlcluster 16 main start
 #  ...  (sql version) (cluster name) action
 
 psql -U postgres
-psql -U luca
+psql postgres -U luca
 
-echo $EDITOR
-nano $PGDATA/pg_hba.conf 
+# SET UP $EDITOR & $VISUAL ENV VARS TO MODIFY THE "pg_hba.conf" FILE:
+# SOME FILES USE $VISUAL, SOME USE $EDITOR, SO GOOD TO POINT BOTH TO SAME EDITOR. 
 locate bashrc
 nano ~/.bashrc
 echo $EDITOR
 echo $VISUAL
-# ADD THESE BOTH TO bashrc:
+# ADD THESE BOTH TO bashrc AS FOLLOWS:
 # export VISUAL=vim
 # export EDITOR="$VISUAL"
 
 $EDITOR $PGDATA/pg_hba.conf
-
 locate pg_hba.conf
+sudo nano $PGDATA/pg_hba.conf 
 sudo nano /etc/postgresql/16/main/pg_hba.conf
